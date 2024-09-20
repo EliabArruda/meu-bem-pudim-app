@@ -15,15 +15,12 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ goToScreen }) => {
         resizeMode="contain"
       />
 
-      {/*}<Text style={styles.title}>Meu Bem Pudim</Text>
-      <Text style={styles.subtitle}>Delícias feitas com amor!</Text>*/}
-
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.button} onPress={() => goToScreen('Pedidos')}>
           <Text style={styles.buttonText}>Fazer Pedido</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => goToScreen('Pagamentos')}>
-          <Text style={styles.buttonText}>Ver Pagamentos</Text>
+        <TouchableOpacity style={styles.button} onPress={() => goToScreen('PedidosRealizados')}>
+          <Text style={styles.buttonText}>Ver Pedidos</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -33,29 +30,15 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ goToScreen }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff', // Fundo branco
+    backgroundColor: '#fff',
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
   },
-  // Estilo da logo no topo da tela
   logo: {
-    width: '120%', // Largura da logo em 60% da tela
-    height: 500, // Altura da logo
-    marginBottom: 1, // Espaço abaixo da logo
-  },
-  title: {
-    fontSize: 36,
-    fontWeight: 'bold',
-    fontFamily: 'cursive',
-    color: '#333',
-    marginBottom: 10,
-  },
-  subtitle: {
-    fontSize: 18,
-    fontWeight: '400',
-    color: '#666',
-    marginBottom: 40,
+    width: '120%',
+    height: 500,
+    marginBottom: 1,
   },
   buttonContainer: {
     width: '100%',

@@ -1,76 +1,68 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Alert, Image } from 'react-native';
 
-interface PedidosScreenProps {
-  goToScreen: (screen: string) => void;
-}
+const produtos = [
+  { nome: 'Pudim de 500ml', preco: 40 },
+  { nome: 'Pudim de 1,1Kg', preco: 60 },
+  { nome: 'Kit de 10 mini pudins', preco: 70 },
+  { nome: 'Kit de 5 mini pudins', preco: 40 },
+  { nome: 'Kit de 20 mini pudins', preco: 130 },
+];
 
-const PedidosScreen: React.FC<PedidosScreenProps> = ({ goToScreen }) => {
+const PedidosScreen = ({ goToScreen, adicionarAoCarrinho, goBack }) => {
+  const handleAddToCart = (item) => {
+    Alert.alert(
+      'Adicionar ao Carrinho',
+      `Você deseja adicionar ${item.nome} ao carrinho?`,
+      [
+        {
+          text: 'Cancelar',
+          style: 'cancel',
+        },
+        {
+          text: 'Sim',
+          onPress: () => {
+            adicionarAoCarrinho(item);
+            Alert.alert('Sucesso', `${item.nome} foi adicionado ao carrinho!`);
+          },
+        },
+      ],
+      { cancelable: false }
+    );
+  };
+
   return (
     <View style={styles.container}>
-      {/* Adicionando a logo na parte superior */}
-      <Image
-        source={require('./assets/MeuBemPudimLogoSemFundo.png')}
-        style={styles.logo}
-        resizeMode="contain"
-      />
-
-      <Text style={styles.title}>Faça Seu Pedido</Text>
-
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button} onPress={() => goToScreen('Home')}>
-          <Text style={styles.buttonText}>Voltar para Home</Text>
-        </TouchableOpacity>
-      </View>
+      <Image source={require('./assets/MeuBemPudimLogoSemFundo.png')} style={styles.logo} />
+      <Text style={styles.title}>Escolha seu Pudim</Text>
+      {produtos.map((item, index) => (
+        <View key={index} style={styles.itemContainer}>
+          <Text style={styles.itemText}>
+            {item.nome} - R$ {item.preco}
+          </Text>
+          <TouchableOpacity style={styles.button} onPress={() => handleAddToCart(item)}>
+            <Text style={styles.buttonText}>Adicionar ao Carrinho</Text>
+          </TouchableOpacity>
+        </View>
+      ))}
+      <TouchableOpacity style={styles.button} onPress={() => goToScreen('Carrinho')}>
+        <Text style={styles.buttonText}>Ver Carrinho</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={goBack}>
+        <Text style={styles.buttonText}>Voltar</Text>
+      </TouchableOpacity>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 20,
-  },
-  logo: {
-    width: '80%',
-    height: 200,
-    marginBottom: 30,
-  },
-  title: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    fontFamily: 'cursive',
-    color: '#333',
-    marginBottom: 50,
-  },
-  buttonContainer: {
-    width: '100%',
-    alignItems: 'center',
-  },
-  button: {
-    width: '80%',
-    padding: 15,
-    backgroundColor: '#FFD700',
-    borderRadius: 30,
-    marginBottom: 20,
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.3,
-    shadowRadius: 5,
-    elevation: 5,
-  },
-  buttonText: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#333',
-  },
+  container: { flex: 1, backgroundColor: '#fff', padding: 20 },
+  logo: { width: 100, height: 100, alignSelf: 'center', marginBottom: 0 },
+  title: { color: '#333', fontSize: 28, alignSelf: 'center', fontWeight: 'bold', marginBottom: 10, marginTop: -10 },
+  itemContainer: { marginBottom: 10 },
+  itemText: { alignSelf: 'left',color: '#333', fontSize: 18 },
+  button: { alignSelf: 'left',backgroundColor: '#FFD700', padding: 10, borderRadius: 30, marginTop: 10 },
+  buttonText: { fontSize: 16, color: '#333' },
 });
 
 export default PedidosScreen;
