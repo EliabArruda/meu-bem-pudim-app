@@ -1,79 +1,145 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Meu Bem Pudim - Mobile App
 
-# Getting Started
+Este é o aplicativo oficial da **Meu Bem Pudim**, uma empresa especializada em pudins deliciosos, localizada no Bairro do Janga, Paulista, PE. Este app foi desenvolvido para facilitar a gestão de pedidos e interações com os clientes via WhatsApp.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+## Visão Geral
 
-## Step 1: Start the Metro Server
+Este aplicativo foi criado utilizando **React Native** e está disponível para dispositivos Android. Ele permite a comunicação direta com os clientes via WhatsApp, organizando e separando os pedidos recebidos e possibilitando o envio de mensagens personalizadas sem a necessidade de abrir o aplicativo do WhatsApp.
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+## Funcionalidades
 
-To start Metro, run the following command from the _root_ of your React Native project:
+- Gerenciamento de pedidos via WhatsApp
+- Envio simultâneo de mensagens para clientes cadastrados
+- Persistência de dados utilizando `AsyncStorage` e `SQLite`
+- Navegação simples e funcional com **React Navigation**
+- Interface moderna utilizando `LinearGradient` e `ImageBackground`
 
-```bash
-# using npm
-npm start
+---
 
-# OR using Yarn
-yarn start
+## Requisitos
+
+Antes de começar, certifique-se de ter o seguinte instalado em sua máquina:
+
+- [Node.js](https://nodejs.org/) (versão 12 ou superior)
+- [Yarn](https://yarnpkg.com/) ou npm (gerenciador de pacotes)
+- [React Native CLI](https://reactnative.dev/docs/environment-setup)
+- Android Studio (para emulação e builds)
+
+---
+
+## Instalação
+
+1. **Clone este repositório em sua máquina local:**
+   ```bash
+   git clone https://github.com/seu-usuario/meu-bem-pudim.git
+   ```
+
+2. **Entre no diretório do projeto:**
+   ```bash
+   cd meu-bem-pudim
+   ```
+
+3. **Instale as dependências do projeto utilizando npm ou yarn:**
+   - **Usando npm:**
+     ```bash
+     npm install
+     ```
+
+   - **Usando yarn:**
+     ```bash
+     yarn install
+     ```
+
+4. **Instale as dependências específicas do Android:**
+   ```bash
+   npx react-native doctor
+   ```
+
+
+
+## Execução
+
+Para iniciar o aplicativo em um dispositivo ou emulador Android, siga as etapas abaixo:
+
+1. Certifique-se de que o Android Studio esteja configurado corretamente, e que um emulador ou dispositivo físico esteja conectado.
+
+2. Execute o comando abaixo para iniciar o aplicativo no Android:
+
+   ```bash
+   npx react-native run-android
+
+## Estrutura do Projeto
+
+Aqui está uma visão geral da estrutura do projeto:
+
+```
+/meu-bem-pudim
+│
+├── /android/                # Configurações específicas do Android
+├── /ios/                    # Configurações específicas do iOS
+├── /src/                    # Código fonte do aplicativo
+│   ├── /components/         # Componentes reutilizáveis
+│   ├── /screens/            # Telas do aplicativo
+│   ├── /services/           # Serviços como API
+│   ├── /assets/             # Imagens e arquivos estáticos
+│   └── /navigation/         # Configuração de navegação
+│
+├── App.js                   # Ponto de entrada do aplicativo
+├── package.json             # Arquivo de dependências do projeto
+└── README.md                # Documentação do projeto
 ```
 
-## Step 2: Start your Application
+## Bibliotecas Utilizadas
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+- **React Native**: Framework para desenvolvimento mobile
+- **React Navigation**: Navegação entre telas
+- **AsyncStorage**: Armazenamento de dados local
+- **SQLite**: Banco de dados local para persistência de dados
+- **LinearGradient**: Efeitos de gradiente nas telas
+- **ImageBackground**: Exibição de imagens de fundo nas telas
 
-### For Android
+## Estilo de Código
 
-```bash
-# using npm
-npm run android
+O projeto utiliza um padrão simples de estilos globais com gradientes e imagens de fundo nas telas. Aqui está um exemplo de como os estilos são aplicados:
 
-# OR using Yarn
-yarn android
+```javascript
+import { StyleSheet } from 'react-native';
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  button: {
+    backgroundColor: '#ff6347',
+    padding: 15,
+    borderRadius: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    elevation: 5,
+  },
+  text: {
+    fontSize: 18,
+    color: '#fff',
+    fontWeight: 'bold',
+  },
+});
+
+export default styles;
 ```
 
-### For iOS
+## Como Contribuir
 
-```bash
-# using npm
-npm run ios
+Contribuições são bem-vindas! Sinta-se à vontade para abrir uma issue ou fazer um pull request. Se você tiver sugestões ou melhorias, envie suas ideias e colaborações.
 
-# OR using Yarn
-yarn ios
-```
+## Contato
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+Se você tiver alguma dúvida ou precisar de mais informações, entre em contato com:
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+**Eliab Arruda da Silva**  
+Email: [eliabad20t@gmail.com](mailto:eliabad20t@gmail.com)
 
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+Obrigado por utilizar o app **Meu Bem Pudim!**
