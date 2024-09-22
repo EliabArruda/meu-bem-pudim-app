@@ -8,7 +8,7 @@ const PagamentoEntrega = ({ goToScreen, carrinho, cliente, finalizarPedido }) =>
     const detalhesPedido = carrinho.map(item => `${item.nome} - R$ ${item.preco}`).join('\n');
     const mensagem = `Pedido realizado com sucesso!\n\nDetalhes do pedido:\n${detalhesPedido}\n\nValor Total: R$ ${totalValue.toFixed(2)}\n\nAguardo a entrega.`;
 
-    const whatsappNumber = '+5581985007186';
+    const whatsappNumber = '+558173043499';
     Linking.openURL(`whatsapp://send?text=${encodeURIComponent(mensagem)}&phone=${whatsappNumber}`);
 
     finalizarPedido();

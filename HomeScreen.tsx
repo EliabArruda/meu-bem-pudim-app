@@ -16,7 +16,8 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ goToScreen }) => {
       />
 
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button} onPress={() => goToScreen('Pedidos')}>
+        {/* Agora vai para a tela de DadosCliente */}
+        <TouchableOpacity style={styles.button} onPress={() => goToScreen('DadosCliente')}>
           <Text style={styles.buttonText}>Fazer Pedido</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={() => goToScreen('PedidosRealizados')}>
@@ -36,9 +37,9 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   logo: {
-    width: '120%',
-    height: 500,
-    marginBottom: 1,
+    width: '80%',
+    height: 300,
+    marginBottom: 20,
   },
   buttonContainer: {
     width: '100%',

@@ -59,7 +59,7 @@ const CarrinhoScreen = ({ carrinho, goToScreen, limparCarrinho, removerDoCarrinh
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#fff', padding: 20 },
-  logo: { width: '100%', height: 100, marginBottom: 20 },
+  logo: { width: 200, height: 200,  alignSelf: 'center', marginBottom: 20 },
   title: { color: '#333', fontSize: 28, fontWeight: 'bold', marginBottom: 20 },
   itemContainer: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 },
   item: { color: '#333', fontSize: 18 },
